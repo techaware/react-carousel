@@ -10,6 +10,7 @@ export default class CarouselItem extends PureComponent {
     clickable: PropTypes.bool,
     children: PropTypes.node,
     width: PropTypes.number,
+    height: PropTypes.number,
     offset: PropTypes.number,
     index: PropTypes.number,
     currentSlideIndex: PropTypes.number,
@@ -26,27 +27,32 @@ export default class CarouselItem extends PureComponent {
 
   render() {
     return (
-      <li
-        className={classname(
-          'BrainhubCarouselItem',
-          {
-            'BrainhubCarouselItem--clickable': this.props.clickable,
-            'BrainhubCarouselItem--active': this.props.index === this.props.currentSlideIndex,
-          },
-        )}
-        style={{
-          paddingRight: `${this.props.offset / 2}px`,
-          paddingLeft: `${this.props.offset / 2}px`,
-          width: `${this.props.width}px`,
-          maxWidth: `${this.props.width}px`,
-          minWidth: `${this.props.width}px`,
-          pointerEvents: this.props.isDragging ? 'none' : null,
-        }}
-        onMouseDown={this.onMouseDown}
-        onTouchStart={this.onTouchStart}
-      >
-        {this.props.children}
-      </li>
+        // <div>
+          <li
+            className={classname(
+              'BrainhubCarouselItem',
+              {
+                'BrainhubCarouselItem--clickable': this.props.clickable,
+                'BrainhubCarouselItem--active': this.props.index === this.props.currentSlideIndex,
+              },
+            )}
+            style={{
+              paddingRight: `${this.props.offset / 2}px`,
+              paddingLeft: `${this.props.offset / 2}px`,
+              width: `${this.props.width}px`,
+              maxWidth: `${this.props.width}px`,
+              minWidth: `${this.props.width}px`,
+              height: `${this.props.height}px`,
+              maxHeight: `${this.props.height}px`,
+              minHeight: `${this.props.height}px`,
+              pointerEvents: this.props.isDragging ? 'none' : null,
+            }}
+            onMouseDown={this.onMouseDown}
+            onTouchStart={this.onTouchStart}
+          >
+            {this.props.children}
+          </li>
+        //  </div>
     );
   }
 }
