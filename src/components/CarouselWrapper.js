@@ -7,24 +7,30 @@ import Carousel from './Carousel';
 export default class CarouselWrapper extends Component {
   static propTypes = {
     value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    valueY: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     onChange: PropTypes.func,
   };
 
   constructor(props) {
     super(props);
     this.state = {
-      value: 0,
+      value: 1,
+      valueY: 1,
     };
   }
 
-  onChange = value => this.setState({ value });
+  onChange = (value, valueY) => this.setState({
+    value: value,
+    valueY: valueY
+  });
 
   render() {
-    const { value, onChange, ...rest } = this.props;
+    const { value,valueY,onChange, ...rest } = this.props;
     const isControlled = !isNil(value);
     return (
       <Carousel
         value={isControlled ? parseInt(value) : this.state.value}
+        valueY={isControlled ? parseInt(valueY) : this.state.valueY}
         onChange={isControlled ? onChange : this.onChange}
         {...rest}
       />

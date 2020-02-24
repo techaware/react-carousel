@@ -14,6 +14,7 @@ export default class CarouselItem extends PureComponent {
     offset: PropTypes.number,
     index: PropTypes.number,
     currentSlideIndex: PropTypes.number,
+    currentSlideIndexY: PropTypes.number,
     isDragging: PropTypes.bool,
   };
 
